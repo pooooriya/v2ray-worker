@@ -1,6 +1,10 @@
 name: Deploy Worker
 on:
-  repository_dispatch:
+  workflow_run:
+    workflows: ["Build worker.js"]
+    types:
+      - completed
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
